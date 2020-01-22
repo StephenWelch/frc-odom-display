@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="poof-power-up-lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/poof-power-up-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/poof-power-up-lib.jar!/" />
+    </SOURCES>
+  </library>
+</component>
