@@ -83,8 +83,8 @@ public class FieldWindow extends Application {
             mouseYInches.setText("Y: " + mouseYInchesVal);
         });
 
-//        NetworkTableInstance.getDefault().startClientTeam(1885);
-        NetworkTableInstance.getDefault().startClient("localhost");
+        NetworkTableInstance.getDefault().startClientTeam(1885);
+//        NetworkTableInstance.getDefault().startClient("localhost");
 
 
         // Set up a listener on the "Time" key in NetworkTables.
