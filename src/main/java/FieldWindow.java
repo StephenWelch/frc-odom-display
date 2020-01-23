@@ -2,6 +2,7 @@ import com.team254.lib.geometry.Pose2d;
 import com.team254.lib.geometry.Rotation2d;
 import com.team254.lib.geometry.Translation2d;
 import edu.wpi.first.networktables.EntryListenerFlags;
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -17,12 +18,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import us.ilite.common.Data;
-import us.ilite.robot.auto.paths.RobotDimensions;
 
 import java.io.File;
 
 public class FieldWindow extends Application {
+
+    private static final NetworkTable
+        kSmartDashboard = NetworkTableInstance.getDefault().getTable("SmartDashboard");
 
     private Image fieldImage;
     private Canvas fieldCanvas;
@@ -81,10 +83,11 @@ public class FieldWindow extends Application {
             mouseYInches.setText("Y: " + mouseYInchesVal);
         });
 
+        NetworkTableInstance.getDefault().startClientTeam(1885);
 
         // Set up a listener on the "Time" key in NetworkTables.
         // When the key is updated, pull odometry information from NetworkTables and draw to the screen
-        NetworkTableInstance.getDefault().addEntryListener(Data.kSmartDashboard.getEntry("Time"), entryNotification -> {
+        NetworkTableInstance.getDefault().addEntryListener(kSmartDashboard.getEntry("Time"), entryNotification -> {
                 Platform.runLater(() -> {
                     OdometryData data = getFromNt();
                     drawData(data);
@@ -184,14 +187,14 @@ public class FieldWindow extends Application {
      * @return An OdometryData object
      */
     private OdometryData getFromNt() {
-        double odomX = Data.kSmartDashboard.getEntry("Odometry X").getDouble(0.0);
-        double odomY = Data.kSmartDashboard.getEntry("Odometry Y").getDouble(0.0);
-        double odomHeading = Data.kSmartDashboard.getEntry("Odometry Heading").getDouble(0.0);
-        double time = Data.kSmartDashboard.getEntry("Time").getDouble(0.0);
+        double odomX = kSmartDashboard.getEntry("Odometry X").getDouble(0.0);
+        double odomY = kSmartDashboard.getEntry("Odometry Y").getDouble(0.0);
+        double odomHeading = kSmartDashboard.getEntry("Odometry Heading").getDouble(0.0);
+        double time = kSmartDashboard.getEntry("Time").getDouble(0.0);
 
-        double targetX = Data.kSmartDashboard.getEntry("Target X").getDouble(0.0);
-        double targetY = Data.kSmartDashboard.getEntry("Target Y").getDouble(0.0);
-        double targetHeading = Data.kSmartDashboard.getEntry("Target Heading").getDouble(0.0);
+        double targetX = kSmartDashboard.getEntry("Target X").getDouble(0.0);
+        double targetY = kSmartDashboard.getEntry("Target Y").getDouble(0.0);
+        double targetHeading = kSmartDashboard.getEntry("Target Heading").getDouble(0.0);
 
         return new OdometryData(
                 new Pose2d(odomX, odomY, Rotation2d.fromDegrees(odomHeading)),

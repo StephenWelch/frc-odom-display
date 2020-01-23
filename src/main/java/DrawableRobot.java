@@ -1,9 +1,9 @@
 import com.team254.lib.geometry.Pose2d;
 import com.team254.lib.geometry.Rotation2d;
 import com.team254.lib.geometry.Translation2d;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import us.ilite.robot.auto.paths.RobotDimensions;
 
 public class DrawableRobot extends ADrawable {
 
