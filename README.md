@@ -3,8 +3,7 @@
 This is a simple application capable of displaying a robot's position on the field via odometry readings. 
 It can also display the target trajectory, if there is one.
 
-[Screenshot]: https://github.com/StephenWelch/frc-odom-display/raw/master/screenshot.png
-
+![Screenshot](https://github.com/StephenWelch/frc-odom-display/raw/master/screenshot.png)
 ## How to Run
 Run `./gradlew run`
 
