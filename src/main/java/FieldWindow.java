@@ -83,7 +83,9 @@ public class FieldWindow extends Application {
             mouseYInches.setText("Y: " + mouseYInchesVal);
         });
 
-        NetworkTableInstance.getDefault().startClientTeam(1885);
+//        NetworkTableInstance.getDefault().startClientTeam(1885);
+        NetworkTableInstance.getDefault().startClient("localhost");
+
 
         // Set up a listener on the "Time" key in NetworkTables.
         // When the key is updated, pull odometry information from NetworkTables and draw to the screen
